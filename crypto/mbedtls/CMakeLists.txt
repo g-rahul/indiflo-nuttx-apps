@@ -67,14 +67,20 @@ if(CONFIG_CRYPTO_MBEDTLS)
   # Include Directory
   # ############################################################################
 
-  set(INCDIR ${MBEDTLS_DIR}/include)
+  set(INCDIR)
+  list(
+    APPEND
+    INCDIR
+    ${MBEDTLS_DIR}/include
+    ${MBEDTLS_DIR}/include/psa
+    ${MBEDTLS_DIR}/include/mbedtls)
 
   # ############################################################################
   # Library Configuration
   # ############################################################################
 
   nuttx_add_library(mbedtls STATIC)
-
+  nuttx_export_header(TARGET mbedtls INCLUDE_DIRECTORIES ${INCDIR})
   target_sources(mbedtls PRIVATE ${CSRCS})
   target_include_directories(mbedtls PRIVATE ${INCDIR})
   target_compile_definitions(mbedtls PRIVATE __unix__)
