@@ -40,7 +40,7 @@ include_directories(${NUTTX_APPS_BINDIR}/include)
 
 add_subdirectory(audioutils)
 add_subdirectory(benchmarks)
-add_subdirectory(boot)
+add_subdirectory(indiflo)
 add_subdirectory(canutils)
 add_subdirectory(crypto)
 add_subdirectory(fsutils)
